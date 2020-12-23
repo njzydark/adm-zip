@@ -211,7 +211,9 @@ module.exports = function (/*Buffer*/input) {
         set extra (val) {
             _extra = val;
             _entryHeader.extraLength = val.length;
-            parseExtra(val);
+            if (val.length >= 4) {
+              parseExtra(val);
+            }
         },
 
         get comment () { return _comment.toString(); },
